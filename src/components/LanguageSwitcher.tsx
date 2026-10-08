@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import type { Locale } from '../content'
 
 type Props = {
@@ -17,7 +19,9 @@ export function LanguageSwitcher({ locale, onChange }: Props) {
     >
       <span aria-hidden="true" className="text-sm">🌐</span>
       <span>{locale.toUpperCase()}</span>
-      <img src="/assets/chevron.svg" alt="" width="12" height="12" />
+      <img src={asset('chevron.svg')} alt="" width="12" height="12" />
     </button>
   )
 }
+
+

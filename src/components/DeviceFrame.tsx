@@ -29,3 +29,4 @@ export function DeviceFrame({ children, label }: Props) {
     </section>
   )
 }
+

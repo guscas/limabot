@@ -47,7 +47,7 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
   position: absolute;
   inset: 0 0 auto;
   height: 74%;
-  background: url('/assets/lima-coast.png') center top / cover no-repeat;
+  background: center top / cover no-repeat;
   z-index: -3;
 }
 
@@ -250,7 +250,7 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
   width: 508px;
   height: 903px;
   transform: translateX(-50%);
-  background: url('/assets/voice-background.png') center / cover no-repeat;
+  background: center / cover no-repeat;
 }
 .voice-atmosphere {
   position: absolute;

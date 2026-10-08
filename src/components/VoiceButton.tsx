@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 type Props = {
   isListening: boolean
   label: string
@@ -18,7 +20,7 @@ export function VoiceButton({ isListening, label, onClick }: Props) {
           aria-label={label}
           onClick={onClick}
         >
-          <img src="/assets/microphone-large.svg" alt="" width="40" height="40" />
+          <img src={asset('microphone-large.svg')} alt="" width="40" height="40" />
         </button>
       </div>
       <button type="button" className="voice-label" onClick={onClick}>
@@ -27,3 +29,5 @@ export function VoiceButton({ isListening, label, onClick }: Props) {
     </div>
   )
 }
+
+

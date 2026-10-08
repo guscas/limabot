@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import { useState } from 'react'
 import type { Locale } from '../content'
 
@@ -34,40 +36,40 @@ export function MapScreen({ locale, onBack, onHome, onVoice, onStart }: Props) {
   return (
     <section className="map-screen" aria-label={t.title}>
       <div className="map-area">
-        <img className="map-image" src="/assets/map4-map.png" alt="Map of Miraflores showing the walking route to Parque Kennedy" />
+        <img className="map-image" src={asset('map4-map.png')} alt="Map of Miraflores showing the walking route to Parque Kennedy" />
         <div className="map-header-fade" aria-hidden="true" />
 
         <header className="map-status" aria-hidden="true">
           <strong>9:41</strong>
           <span>
-            <img src="/assets/map4-cellular.svg" alt="" width="14" height="14" />
-            <img src="/assets/map4-wifi.svg" alt="" width="14" height="14" />
-            <img src="/assets/map4-battery.svg" alt="" width="16" height="16" />
+            <img src={asset('map4-cellular.svg')} alt="" width="14" height="14" />
+            <img src={asset('map4-wifi.svg')} alt="" width="14" height="14" />
+            <img src={asset('map4-battery.svg')} alt="" width="16" height="16" />
           </span>
         </header>
 
         <div className="map-toolbar">
-          <button type="button" onClick={onBack} aria-label="Back"><img src="/assets/map4-back.svg" alt="" width="20" height="20" /></button>
+          <button type="button" onClick={onBack} aria-label="Back"><img src={asset('map4-back.svg')} alt="" width="20" height="20" /></button>
           <div><h1>{t.title}</h1><p>{t.destination}</p></div>
           <span>
-            <button type="button" aria-label="Share route"><img src="/assets/map4-share.svg" alt="" width="16" height="16" /></button>
+            <button type="button" aria-label="Share route"><img src={asset('map4-share.svg')} alt="" width="16" height="16" /></button>
             <button type="button" aria-label="Save place" aria-pressed={saved} onClick={() => setSaved((value) => !value)}>
-              <img src="/assets/map4-save.svg" alt="" width="16" height="16" />
+              <img src={asset('map4-save.svg')} alt="" width="16" height="16" />
             </button>
           </span>
         </div>
 
-        <button type="button" className="map-recenter" aria-label="Re-center map"><img src="/assets/map4-recenter.svg" alt="" width="20" height="20" /></button>
-        <img className="map-route-line" src="/assets/map4-route-line.svg" alt="" />
+        <button type="button" className="map-recenter" aria-label="Re-center map"><img src={asset('map4-recenter.svg')} alt="" width="20" height="20" /></button>
+        <img className="map-route-line" src={asset('map4-route-line.svg')} alt="" />
 
         <div className="map-destination">
-          <span className="map-pin"><img src="/assets/map4-pin.svg" alt="" width="40" height="40" /><i /></span>
+          <span className="map-pin"><img src={asset('map4-pin.svg')} alt="" width="40" height="40" /><i /></span>
           <strong>{t.place}</strong>
         </div>
         <div className="map-route-badge"><strong>5 min</strong><small>400 m</small></div>
 
         <div className="map-user">
-          <span><img src="/assets/map4-user-ring.svg" alt="" /><img src="/assets/map4-user-mid.svg" alt="" /><img src="/assets/map4-user-dot.svg" alt="" /></span>
+          <span><img src={asset('map4-user-ring.svg')} alt="" /><img src={asset('map4-user-mid.svg')} alt="" /><img src={asset('map4-user-dot.svg')} alt="" /></span>
           <strong>{t.location}</strong>
         </div>
       </div>
@@ -75,10 +77,10 @@ export function MapScreen({ locale, onBack, onHome, onVoice, onStart }: Props) {
       <section className="map-sheet" aria-label={t.place}>
         <i className="map-sheet-handle" aria-hidden="true" />
         <div className="map-place-head">
-          <img src="/assets/map4-extra.jpeg" alt="Gardens at Parque Kennedy" />
+          <img src={asset('map4-extra.jpeg')} alt="Gardens at Parque Kennedy" />
           <div>
             <h2>{t.place}</h2>
-            <p className="map-rating"><img src="/assets/map4-star.svg" alt="" /> <strong>4.5</strong> <span>{t.reviews}</span></p>
+            <p className="map-rating"><img src={asset('map4-star.svg')} alt="" /> <strong>4.5</strong> <span>{t.reviews}</span></p>
             <p>{t.category}</p>
             <p className="map-open"><i /> <strong>{t.open}</strong> <span>•</span> {t.until}</p>
           </div>
@@ -86,31 +88,33 @@ export function MapScreen({ locale, onBack, onHome, onVoice, onStart }: Props) {
 
         <div className="map-actions">
           <button type="button" className="primary" onClick={onStart}>
-            <img src="/assets/map4-route.svg" alt="" />{t.start}
+            <img src={asset('map4-route.svg')} alt="" />{t.start}
           </button>
           <button type="button" onClick={() => setDetailsOpen((value) => !value)} aria-expanded={detailsOpen}>{t.details}</button>
         </div>
 
         <div className="map-stats">
-          <span><img src="/assets/map4-walk.svg" alt="" /><strong>5 min (400 m)</strong></span><i />
-          <span><img src="/assets/map4-ruler.svg" alt="" />0.4 km</span><i />
-          <span><img src="/assets/map4-terrain.svg" alt="" />{t.flat}</span>
+          <span><img src={asset('map4-walk.svg')} alt="" /><strong>5 min (400 m)</strong></span><i />
+          <span><img src={asset('map4-ruler.svg')} alt="" />0.4 km</span><i />
+          <span><img src={asset('map4-terrain.svg')} alt="" />{t.flat}</span>
         </div>
 
         <button type="button" className="map-accessible">
-          <span className="map-accessible-icon"><img src="/assets/map4-wheelchair.svg" alt="" /></span>
+          <span className="map-accessible-icon"><img src={asset('map4-wheelchair.svg')} alt="" /></span>
           <span><strong>{t.accessible}</strong><small>{t.accessibleNote}</small></span>
-          <img src="/assets/map4-chevron.svg" alt="" />
+          <img src={asset('map4-chevron.svg')} alt="" />
         </button>
       </section>
 
       <nav className="map-nav" aria-label="Primary navigation">
-        <button type="button" onClick={onHome}><img src="/assets/result-home.svg" alt="" /><span>{t.home}</span></button>
-        <button type="button"><img src="/assets/result-explore.svg" alt="" /><span>{t.explore}</span></button>
-        <button type="button"><img src="/assets/result-trip.svg" alt="" /><span>{t.trip}</span></button>
-        <button type="button"><img src="/assets/result-saved.svg" alt="" /><span>{t.saved}</span></button>
-        <button type="button" className="map-nav-mic" onClick={onVoice} aria-label="Open voice assistant"><img src="/assets/result-mic.svg" alt="" /></button>
+        <button type="button" onClick={onHome}><img src={asset('result-home.svg')} alt="" /><span>{t.home}</span></button>
+        <button type="button"><img src={asset('result-explore.svg')} alt="" /><span>{t.explore}</span></button>
+        <button type="button"><img src={asset('result-trip.svg')} alt="" /><span>{t.trip}</span></button>
+        <button type="button"><img src={asset('result-saved.svg')} alt="" /><span>{t.saved}</span></button>
+        <button type="button" className="map-nav-mic" onClick={onVoice} aria-label="Open voice assistant"><img src={asset('result-mic.svg')} alt="" /></button>
       </nav>
     </section>
   )
 }
+
+

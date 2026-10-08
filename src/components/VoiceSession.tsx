@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import { useState } from 'react'
 import type { Locale } from '../content'
 
@@ -57,25 +59,25 @@ export function VoiceSession({ locale, isListening, transcript, onClose, onStop 
 
   return (
     <section className="voice-screen" aria-label="LimaBot voice session">
-      <div className="voice-background" aria-hidden="true" />
+      <div className="voice-background" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}assets/voice-background.png)` }} />
       <div className="voice-atmosphere" aria-hidden="true" />
 
       <header className="voice-status-bar" aria-hidden="true">
         <strong>9:41</strong>
         <span>
-          <img src="/assets/voice-signal.svg" alt="" width="16" height="14" />
-          <img src="/assets/voice-wifi.svg" alt="" width="14" height="14" />
+          <img src={asset('voice-signal.svg')} alt="" width="16" height="14" />
+          <img src={asset('voice-wifi.svg')} alt="" width="14" height="14" />
           <i className="voice-battery"><i /></i>
         </span>
       </header>
 
       <div className="voice-navigation">
         <button type="button" className="voice-nav-button" onClick={onClose} aria-label={t.close}>
-          <img src="/assets/voice-close.svg" alt="" width="20" height="20" />
+          <img src={asset('voice-close.svg')} alt="" width="20" height="20" />
         </button>
-        <img className="voice-brand" src="/assets/voice-brand.svg" alt="LimaBot" width="124" height="24" />
+        <img className="voice-brand" src={asset('voice-brand.svg')} alt="LimaBot" width="124" height="24" />
         <button type="button" className="voice-nav-button" aria-label={t.settings} onClick={() => setNotice(t.settings)}>
-          <img src="/assets/voice-settings.svg" alt="" width="16" height="16" />
+          <img src={asset('voice-settings.svg')} alt="" width="16" height="16" />
         </button>
       </div>
 
@@ -116,7 +118,7 @@ export function VoiceSession({ locale, isListening, transcript, onClose, onStop 
 
       <footer className="voice-controls">
         <button type="button" className="voice-control secondary" onClick={() => setShowTyping((value) => !value)}>
-          <span><img src="/assets/voice-keyboard.svg" alt="" width="24" height="24" /></span>
+          <span><img src={asset('voice-keyboard.svg')} alt="" width="24" height="24" /></span>
           <small>{t.type}</small>
         </button>
         <button type="button" className="voice-control stop" onClick={onStop}>
@@ -124,10 +126,12 @@ export function VoiceSession({ locale, isListening, transcript, onClose, onStop 
           <small>{t.stop}</small>
         </button>
         <button type="button" className="voice-control secondary" onClick={() => setNotice(t.cameraNotice)}>
-          <span><img src="/assets/voice-camera.svg" alt="" width="24" height="24" /></span>
+          <span><img src={asset('voice-camera.svg')} alt="" width="24" height="24" /></span>
           <small>{t.camera}</small>
         </button>
       </footer>
     </section>
   )
 }
+
+

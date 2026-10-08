@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 type Props = {
   labels: { home: string; explore: string; trip: string; saved: string }
   onVoice: () => void
@@ -21,14 +23,16 @@ export function BottomNavigation({ labels, onVoice }: Props) {
             className={`nav-item ${key === 'home' ? 'active' : ''} ${index > 1 ? 'nav-right' : ''}`}
             aria-current={key === 'home' ? 'page' : undefined}
           >
-            <img src={`/assets/${icon}`} alt="" width="24" height="24" />
+            <img src={asset(icon)} alt="" width="24" height="24" />
             <span>{labels[key]}</span>
           </button>
         ))}
         <button type="button" className="nav-voice" aria-label="Open voice assistant" onClick={onVoice}>
-          <img src="/assets/microphone-small.svg" alt="" width="24" height="24" />
+          <img src={asset('microphone-small.svg')} alt="" width="24" height="24" />
         </button>
       </div>
     </nav>
   )
 }
+
+

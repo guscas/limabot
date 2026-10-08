@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import { useRef, useState, type FormEvent, type KeyboardEvent, type WheelEvent } from 'react'
 import type { Locale } from '../content'
 
@@ -129,30 +131,30 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
       <header className="result-status-bar" aria-hidden="true">
         <strong>9:41</strong>
         <span>
-          <img src="/assets/result-signal.svg" alt="" width="16" height="12" />
-          <img src="/assets/result-wifi.svg" alt="" width="14" height="12" />
+          <img src={asset('result-signal.svg')} alt="" width="16" height="12" />
+          <img src={asset('result-wifi.svg')} alt="" width="14" height="12" />
           <i className="result-battery"><i /></i>
         </span>
       </header>
 
       <div className="result-topbar">
         <button type="button" onClick={onClose} aria-label={t.close}>
-          <img src="/assets/result-close.svg" alt="" width="20" height="20" />
+          <img src={asset('result-close.svg')} alt="" width="20" height="20" />
         </button>
-        <img src="/assets/result-brand.svg" alt="LimaBot" width="124" height="24" />
+        <img src={asset('result-brand.svg')} alt="LimaBot" width="124" height="24" />
         <div>
           <button type="button" aria-label={t.volume} aria-pressed={muted} onClick={() => setMuted((value) => !value)}>
-            <img src="/assets/result-speaker.svg" alt="" width="20" height="20" />
+            <img src={asset('result-speaker.svg')} alt="" width="20" height="20" />
           </button>
           <button type="button" aria-label={t.more}>
-            <img src="/assets/result-more.svg" alt="" width="20" height="20" />
+            <img src={asset('result-more.svg')} alt="" width="20" height="20" />
           </button>
         </div>
       </div>
 
       <main className="result-content">
         <div className="bot-message">
-          <span className="bot-avatar"><img src="/assets/result-bot.svg" alt="" width="18" height="18" /></span>
+          <span className="bot-avatar"><img src={asset('result-bot.svg')} alt="" width="18" height="18" /></span>
           <p>{t.answer}</p>
         </div>
 
@@ -171,10 +173,10 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
               <div className="place-image">
                 {place.id === 'kennedy' ? (
                   <button type="button" className="place-map-trigger" onClick={onMap} aria-label={`Open map for ${place.name}`}>
-                    <img src={`/assets/${place.image}`} alt={place.name} />
+                    <img src={asset(place.image)} alt={place.name} />
                   </button>
                 ) : (
-                  <img src={`/assets/${place.image}`} alt={place.name} />
+                  <img src={asset(place.image)} alt={place.name} />
                 )}
                 {place.favorite && (
                   <button
@@ -184,7 +186,7 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
                     aria-pressed={favorites.has(place.id)}
                     onClick={() => toggleFavorite(place.id)}
                   >
-                    <img src="/assets/result-favorite.svg" alt="" width="14" height="14" />
+                    <img src={asset('result-favorite.svg')} alt="" width="14" height="14" />
                   </button>
                 )}
               </div>
@@ -193,8 +195,8 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
                 <ul>
                   <li><span aria-hidden="true">🚶</span>{place.distance}</li>
                   <li className="open"><i />{t.open}</li>
-                  <li><img src="/assets/result-ticket.png" alt="" width="12" height="9" />{place.price}</li>
-                  <li><img src="/assets/result-star.svg" alt="" width="11" height="11" /><strong>{place.rating}</strong><small>{place.reviews}</small></li>
+                  <li><img src={asset('result-ticket.png')} alt="" width="12" height="9" />{place.price}</li>
+                  <li><img src={asset('result-star.svg')} alt="" width="11" height="11" /><strong>{place.rating}</strong><small>{place.reviews}</small></li>
                 </ul>
               </div>
               </article>
@@ -214,7 +216,7 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
         <section className="follow-up-grid" aria-label="Follow-up suggestions">
           {t.chips.map((chip, index) => (
             <button type="button" key={chip} onClick={() => index === 2 ? onMap() : setQuery(chip)}>
-              <img src={`/assets/${index < 2 ? 'result-chip-chat.svg' : index === 2 ? 'result-chip-map.svg' : 'result-chip-search.svg'}`} alt="" width="14" height="14" />
+              <img src={asset(index < 2 ? 'result-chip-chat.svg' : index === 2 ? 'result-chip-map.svg' : 'result-chip-search.svg')} alt="" width="14" height="14" />
               <span>{chip}</span>
             </button>
           ))}
@@ -226,25 +228,27 @@ export function ResultScreen({ locale, onClose, onVoice, onMap }: Props) {
       <form className="result-input" onSubmit={submit}>
         <div>
           <button type="button" onClick={onVoice} aria-label="Open voice assistant">
-            <img src="/assets/result-input-mic.svg" alt="" width="16" height="16" />
+            <img src={asset('result-input-mic.svg')} alt="" width="16" height="16" />
           </button>
           <label className="sr-only" htmlFor="result-query">{t.placeholder}</label>
           <input id="result-query" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t.placeholder} />
           <button type="submit" aria-label={t.send} disabled={!query.trim()}>
-            <img src="/assets/result-send.svg" alt="" width="14" height="14" />
+            <img src={asset('result-send.svg')} alt="" width="14" height="14" />
           </button>
         </div>
       </form>
 
       <nav className="result-nav" aria-label="Primary navigation">
-        <button type="button"><img src="/assets/result-home.svg" alt="" width="20" height="20" /><span>Home</span></button>
-        <button type="button"><img src="/assets/result-explore.svg" alt="" width="24" height="24" /><span>Explore</span></button>
-        <button type="button"><img src="/assets/result-trip.svg" alt="" width="24" height="24" /><span>My trip</span></button>
-        <button type="button"><img src="/assets/result-saved.svg" alt="" width="24" height="24" /><span>Saved</span></button>
+        <button type="button"><img src={asset('result-home.svg')} alt="" width="20" height="20" /><span>Home</span></button>
+        <button type="button"><img src={asset('result-explore.svg')} alt="" width="24" height="24" /><span>Explore</span></button>
+        <button type="button"><img src={asset('result-trip.svg')} alt="" width="24" height="24" /><span>My trip</span></button>
+        <button type="button"><img src={asset('result-saved.svg')} alt="" width="24" height="24" /><span>Saved</span></button>
         <button type="button" className="result-nav-mic" onClick={onVoice} aria-label="Open voice assistant">
-          <img src="/assets/result-mic.svg" alt="" width="24" height="24" />
+          <img src={asset('result-mic.svg')} alt="" width="24" height="24" />
         </button>
       </nav>
     </section>
   )
 }
+
+

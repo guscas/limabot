@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import type { SuggestionKey } from '../content'
 
 const suggestions: Array<{ key: SuggestionKey; icon: string; overlay?: string }> = [
@@ -25,8 +27,8 @@ export function QuickSuggestions({ labels, onSelect }: Props) {
           onClick={() => onSelect(key)}
         >
           <span className="suggestion-icon" aria-hidden="true">
-            <img src={`/assets/${icon}`} alt="" width="20" height="20" />
-            {overlay && <img className="suggestion-icon-overlay" src={`/assets/${overlay}`} alt="" width="20" height="20" />}
+            <img src={asset(icon)} alt="" width="20" height="20" />
+            {overlay && <img className="suggestion-icon-overlay" src={asset(overlay)} alt="" width="20" height="20" />}
           </span>
           <span>{labels[key]}</span>
         </button>
@@ -34,3 +36,5 @@ export function QuickSuggestions({ labels, onSelect }: Props) {
     </section>
   )
 }
+
+

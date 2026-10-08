@@ -1,3 +1,5 @@
+const asset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`
+
 import { useEffect, useRef, useState } from 'react'
 import { ActiveMapScreen } from './components/ActiveMapScreen'
 import { BottomNavigation } from './components/BottomNavigation'
@@ -131,24 +133,24 @@ function App() {
   return (
     <main className="app-shell">
       <DeviceFrame label="LimaBot home screen">
-        <div className="hero-photo" aria-hidden="true" />
+        <div className="hero-photo" aria-hidden="true" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}assets/lima-coast.png)` }} />
         <div className="bottom-fade" aria-hidden="true" />
 
         <header className="status-bar" aria-hidden="true">
           <strong>9:41</strong>
           <span className="status-icons">
-            <img src="/assets/signal.svg" alt="" width="16" height="14" />
-            <img src="/assets/wifi.svg" alt="" width="16" height="14" />
+            <img src={asset('signal.svg')} alt="" width="16" height="14" />
+            <img src={asset('wifi.svg')} alt="" width="16" height="14" />
             <span className="battery"><span /></span>
           </span>
         </header>
 
         <div className="top-actions">
-          <img className="promperu-logo" src="/assets/promperu.svg" alt="PromPerú" width="114" height="48" />
+          <img className="promperu-logo" src={asset('promperu.svg')} alt="PromPerú" width="114" height="48" />
           <div className="top-actions-right">
             <LanguageSwitcher locale={locale} onChange={setLocale} />
             <button type="button" className="profile-button" aria-label="Open profile">
-              <img src="/assets/profile.svg" alt="" width="16" height="16" />
+              <img src={asset('profile.svg')} alt="" width="16" height="16" />
             </button>
           </div>
         </div>
@@ -180,3 +182,5 @@ function App() {
 }
 
 export default App
+
+
